@@ -1,7 +1,7 @@
 # Point cloud cropper
 
-Efficient point cloud bounding-box cropping. Parallelized implementation based
-on [TBB](https://github.com/oneapi-src/oneTBB) `parallel_scan`.
+Efficient 3D point cloud bounding-box cropping. Implemented with parallel stream
+compaction using [TBB](https://github.com/oneapi-src/oneTBB)'s `parallel_scan`.
 
 ### Installation
 
@@ -32,15 +32,15 @@ np.random.seed(0)
 points = np.random.rand(int(1e8), 3)
 print(points.shape)
 
-# get_crop_index returns the selected index.
-index_np = pc.get_crop_index(points=points,
-                             x_min=0.25,
-                             y_min=0.25,
-                             z_min=0.25,
-                             x_max=0.75,
-                             y_max=0.75,
-                             z_max=0.75)
-cropped_points = points[index_np]
+# get_crop_indices returns the selected index.
+indices_np = pc.get_crop_indices(points=points,
+                                 x_min=0.25,
+                                 y_min=0.25,
+                                 z_min=0.25,
+                                 x_max=0.75,
+                                 y_max=0.75,
+                                 z_max=0.75)
+cropped_points = points[indices_np]
 print(cropped_points.shape)
 ```
 
