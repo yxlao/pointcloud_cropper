@@ -3,7 +3,7 @@ import numpy as np
 import time
 
 
-def np_get_crop_index(points, x_min, y_min, z_min, x_max, y_max, z_max):
+def np_get_crop_indices(points, x_min, y_min, z_min, x_max, y_max, z_max):
     indices = np.where((points[:, 0] >= x_min) & (points[:, 0] <= x_max)
                        & (points[:, 1] >= y_min) & (points[:, 1] <= y_max)
                        & (points[:, 2] >= z_min) & (points[:, 2] <= z_max))
@@ -23,42 +23,42 @@ def run_benchmark():
 
     # Crop with numpy.
     s = time.time()
-    index_np = np_get_crop_index(points=points,
-                                 x_min=x_min,
-                                 y_min=y_min,
-                                 z_min=z_min,
-                                 x_max=x_max,
-                                 y_max=y_max,
-                                 z_max=z_max)
+    indices_np = np_get_crop_indices(points=points,
+                                     x_min=x_min,
+                                     y_min=y_min,
+                                     z_min=z_min,
+                                     x_max=x_max,
+                                     y_max=y_max,
+                                     z_max=z_max)
     print("Time with numpy", time.time() - s)
-    print(index_np.shape)
+    print(indices_np.shape)
 
     # Crop impl with TBB.
     s = time.time()
-    index_tbb = pc.get_crop_index(points=points,
-                                  x_min=x_min,
-                                  y_min=y_min,
-                                  z_min=z_min,
-                                  x_max=x_max,
-                                  y_max=y_max,
-                                  z_max=z_max)
+    indices_tbb = pc.get_crop_indices(points=points,
+                                      x_min=x_min,
+                                      y_min=y_min,
+                                      z_min=z_min,
+                                      x_max=x_max,
+                                      y_max=y_max,
+                                      z_max=z_max)
     print("Time with TBB", time.time() - s)
-    print(index_tbb.shape)
+    print(indices_tbb.shape)
 
     # Crop serial impl.
     s = time.time()
-    index_serial = pc.get_crop_index_serial(points=points,
-                                            x_min=x_min,
-                                            y_min=y_min,
-                                            z_min=z_min,
-                                            x_max=x_max,
-                                            y_max=y_max,
-                                            z_max=z_max)
+    indices_serial = pc.get_crop_indices_serial(points=points,
+                                                x_min=x_min,
+                                                y_min=y_min,
+                                                z_min=z_min,
+                                                x_max=x_max,
+                                                y_max=y_max,
+                                                z_max=z_max)
     print("Time with serial impl", time.time() - s)
-    print(index_serial.shape)
+    print(indices_serial.shape)
 
-    if np.allclose(index_np, index_tbb) and np.allclose(
-            index_np, index_serial):
+    if np.allclose(indices_np, indices_tbb) and np.allclose(
+            indices_np, indices_serial):
         print("Equal")
 
 
