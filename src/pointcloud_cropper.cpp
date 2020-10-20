@@ -9,6 +9,8 @@
 
 #include <cstring>
 
+#include "stream_compaction.h"
+
 namespace py = pybind11;
 using namespace py::literals;
 
