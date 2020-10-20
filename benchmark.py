@@ -4,10 +4,9 @@ import time
 
 
 def np_get_crop_indices(points, x_min, y_min, z_min, x_max, y_max, z_max):
-    indices = np.where((points[:, 0] >= x_min) & (points[:, 0] <= x_max)
-                       & (points[:, 1] >= y_min) & (points[:, 1] <= y_max)
-                       & (points[:, 2] >= z_min) & (points[:, 2] <= z_max))
-    return np.array(indices).ravel()
+    return np.nonzero((points[:, 0] >= x_min) & (points[:, 0] <= x_max)
+                      & (points[:, 1] >= y_min) & (points[:, 1] <= y_max)
+                      & (points[:, 2] >= z_min) & (points[:, 2] <= z_max))[0]
 
 
 def run_benchmark():

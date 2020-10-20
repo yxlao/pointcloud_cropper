@@ -49,6 +49,6 @@ print(cropped_points.shape)
 1e8 points, 50% selection ratio. Measured with Intel i9-9980XE.
 
 ```txt
-Time with numpy: 1.428987979888916 sec
-Time with TBB  : 0.103589773178100 sec
+Time with numpy: 1.3744 sec
+Time with TBB  : 0.1031 sec
 ```
