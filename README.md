@@ -3,7 +3,7 @@
 Efficient 3D point cloud bounding-box cropping. Implemented with parallel stream
 compaction using [TBB](https://github.com/oneapi-src/oneTBB)'s `parallel_scan`.
 
-### Installation
+## Installation
 
 ```bash
 # Dependency.
@@ -21,7 +21,7 @@ python setup.py install
 python benchmark.py
 ```
 
-### Usage
+## Usage
 
 ```python
 import pointcloud_cropper as pc
@@ -44,7 +44,7 @@ cropped_points = points[indices_np]
 print(cropped_points.shape)
 ```
 
-### Performance
+## Performance
 
 1e8 points, 50% selection ratio. Measured with Intel i9-9980XE.
 
