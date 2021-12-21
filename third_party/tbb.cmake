@@ -3,9 +3,9 @@ include(ExternalProject)
 ExternalProject_Add(
     ext_tbb
     PREFIX tbb
-    GIT_REPOSITORY https://github.com/wjakob/tbb.git
-    GIT_TAG 141b0e310e1fb552bdca887542c9c1a8544d6503 # Sept 2020
-    UPDATE_COMMAND ""
+    URL https://github.com/wjakob/tbb/archive/141b0e310e1fb552bdca887542c9c1a8544d6503.zip # Sept 2020
+    URL_HASH SHA256=503e818765747b8228689dafcf9b54f1f81b4709e756e47d7e179b6d03566a5e
+    DOWNLOAD_DIR "${THIRD_PARTY_DOWNLOAD_DIR}/tbb"
     CMAKE_ARGS
         -DCMAKE_INSTALL_PREFIX=<INSTALL_DIR>
         -DCMAKE_POSITION_INDEPENDENT_CODE=ON
