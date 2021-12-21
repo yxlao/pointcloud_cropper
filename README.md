@@ -6,15 +6,16 @@ compaction using [TBB](https://github.com/oneapi-src/oneTBB)'s `parallel_scan`.
 ## Installation
 
 ```bash
-# Dependency.
-sudo apt install cmake
+# Install CMake
+sudo apt install cmake # Install globally
+conda install cmake    # Install in our conda env
 
 # Get code.
-# --recursive is required, or `git submodule update --init --recursive`.
-git clone --recursive https://github.com/yxlao/pointcloud_cropper
+git clone https://github.com/yxlao/pointcloud_cropper
 cd pointcloud_cropper
 
-# Build (activate virtualenv fist).
+# Activate your virtualenv.
+# Build and install.
 python setup.py install
 
 # Test.
