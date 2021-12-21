@@ -1,4 +1,4 @@
-# Point cloud cropper
+# Efficient point cloud cropper
 
 Efficient 3D point cloud bounding-box cropping. Implemented with parallel stream
 compaction using [TBB](https://github.com/oneapi-src/oneTBB)'s `parallel_scan`.
