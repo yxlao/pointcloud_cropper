@@ -20,6 +20,8 @@ def run_benchmark():
     y_max = 0.75
     z_max = 0.75
 
+    print(f"Cropping point cloud of shape {points.shape}")
+
     # Crop with numpy.
     s = time.time()
     indices_np = np_get_crop_indices(points=points,
@@ -30,7 +32,6 @@ def run_benchmark():
                                      y_max=y_max,
                                      z_max=z_max)
     print("Time with numpy", time.time() - s)
-    print(indices_np.shape)
 
     # Crop impl with TBB.
     s = time.time()
@@ -42,7 +43,6 @@ def run_benchmark():
                                       y_max=y_max,
                                       z_max=z_max)
     print("Time with TBB", time.time() - s)
-    print(indices_tbb.shape)
 
     # Crop serial impl.
     s = time.time()
@@ -54,7 +54,6 @@ def run_benchmark():
                                                 y_max=y_max,
                                                 z_max=z_max)
     print("Time with serial impl", time.time() - s)
-    print(indices_serial.shape)
 
     if np.allclose(indices_np, indices_tbb) and np.allclose(
             indices_np, indices_serial):
